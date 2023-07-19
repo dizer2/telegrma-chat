@@ -1,0 +1,23 @@
+@import "../../../main/variables.scss";
+@import "../../../main/mixin.scss";
+
+
+
+	.home__buttons-button{
+		width: 272px;
+		height: 65px;
+		background-color: $mainColor;
+		cursor: pointer;
+		@include transiton(700ms);
+		@include display-center(center, center);
+		@include font(#fff, 24px, 500, 15px, 0, 0);
+		margin: 20px 0;
+
+		&:hover{
+			background-color: transparent;
+			border: 1px solid $mainColor;
+			color: $mainColor;
+			@include transiton(700ms);
+		}
+	}
+
