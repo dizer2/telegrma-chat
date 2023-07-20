@@ -1,0 +1,22 @@
+@import "../../../main/variables.scss";
+@import "../../../main/mixin.scss";
+
+
+.home__buttons-input{
+	width: 552px;
+	height: 65px;
+	background-color: $mainColor;
+	cursor: pointer;
+	@include transiton(700ms);
+	@include display-center(center, center);
+	@include font(#fff, 24px, 500, 15px, 0, 0);
+	margin: 20px 0;
+	padding: 0 20px;
+	outline: none;
+	box-shadow: 1px;
+	-webkit-box-shadow: inset 0 0 0 50px $mainColor;
+	-webkit-text-fill-color: #fff;
+	&::placeholder{
+		color: #fff;
+	}
+}

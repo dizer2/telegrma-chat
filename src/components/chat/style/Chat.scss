@@ -1,0 +1,227 @@
+@import "../../main/variables.scss";
+@import "../../main/mixin.scss";
+
+.chat{
+	width: 100%;
+	height: 100vh;
+	background-color: $chatColor;
+	display: flex;
+	&__left{
+		width: 15%;
+		height: 100%;
+		background-color: $bar;
+	}
+	&__rigth{
+		width: 85%;
+		height: 100%;
+		background-color: #333;
+		
+		&-header{
+			width: 100%;
+			height: 10%;
+			border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+			@include display-center(space-between, center);
+			padding: 0 60px;
+			.header__info{
+				@include display-center(center, center);
+				&-avatar{
+					width: 50px;
+					height: 50px;
+					border-radius: 50%;
+					background-image: url(../../main/img/icon.png);
+					background-size: cover;
+				}
+				&-box{
+					margin-left: 10px;
+					.header__title{
+						@include font(#fff, 16px, 600, normal, 0, 0);
+					}
+					.header__status{
+						@include font(#ededed, 14px, 500, normal, 0, 0);
+
+					}
+				}
+			}
+			.header__cricle{
+				width: 40px;
+				height: 40px;
+				border-radius: 50%;
+				background: rgba(255, 255, 255, 0.07);
+				@include display-center(center, center);
+				cursor: pointer;
+				&-touch{
+					width: 20px;
+					height: 20px;
+					background-image: url(../img/touch.svg);
+					background-size: cover;
+				}
+			}
+
+		}
+		&-main{
+			width: 100%;
+			height: 75%;
+			padding: 0 60px;
+			display: flex;
+			flex-direction: column;
+			overflow-y: auto;
+			&::-webkit-scrollbar {
+				width: 4px;
+			}
+			  
+			  &::-webkit-scrollbar-track {
+				background: transparent;
+			  }
+			  
+			  &::-webkit-scrollbar-thumb {
+				background: $time;
+				border-radius: 8px;
+			  }
+			  
+
+			.container__messege{
+				width: 100%;
+				height: auto;
+				display: flex;
+				flex-direction: column;
+				.newMessege{
+					width: auto;
+					height: auto;
+					@include display-center(flex-start, flex-end);
+					margin-top: 10px;
+					&__avatar{
+						width: 35px;
+						height: 35px;
+						background-color: red;
+						border-radius: 50%;
+						@include display-center(center, center);
+	
+					}
+					&__messege{
+						min-width: 150px;
+						max-width: 350px;
+						height: auto;
+						border-radius: 14px 14px 14px 4px;
+						background: rgba(255, 255, 255, 0.10);
+						margin-left: 7px;
+						padding: 10px;
+						&-header{
+							width: 100%;
+							height: 5%;
+							@include font(red, 12px, 600, normal, 0, 0);
+	
+						}
+						&-main{
+							width: 100%;
+							height: 90%;
+							@include font(#fff, 14px, 500, normal, 0, 0);
+							padding-top: 5px;
+	
+						}
+						&-bottom{
+							width: 100%;
+							height: 5%;
+							@include font($time, 12px, 400, normal, 0, 0);
+							@include display-center(flex-end, center);
+						}
+					}
+				}
+				
+				.newMessegeOther{
+					align-self: flex-start;
+			   }
+			   .newMessegeMy{
+					align-self: flex-end;
+					.newMessege__avatar{
+						display: none;
+					}
+					.newMessege__messege{
+						border-radius: 6px;
+						margin-left: 7px;
+						padding: 10px;
+						.newMessege__messege-header{
+							p{
+								display: none;
+							}
+						}
+					}
+			   }
+			}
+			
+
+		}
+		&-bottom{
+			width: 100%;
+			height: 15%;
+			@include display-center(center, center);
+			padding: 0 20px;
+
+			.messege{
+				width: 100%;
+				height: 60px;
+				border-radius: 8px;
+				background-color:  rgba(255, 255, 255, 0.05);
+				@include display-center(space-between, center);
+
+				&__left{
+
+					width: 60px;
+					height: 100%;
+					@include display-center(center, center);
+					cursor: pointer;
+
+					&-file{
+						width: 24px;
+						height: 24px;
+						background-image: url(../img/attach.svg);
+						background-size: cover;
+					}
+				}
+				&__main{
+					width: 85%;
+					height: 100%;
+					@include display-center(center, center);
+					&-messege{
+						width: 100%;
+						height: 100%;
+						background-color: transparent;
+						outline: none;
+						border: none;
+						@include font(#8A8A8A, 16px, 500, normal, 0, 0);
+
+					}
+				}
+				&__rigth{
+					width: 120px;
+					height: 100%;
+					@include display-center(flex-end, center);
+					&-emoji{
+						width: 60px;
+						height: 100%;
+						@include display-center(center, center);
+						cursor: pointer;
+						.emoji{
+							width: 24px;
+							height: 24px;
+							background-image: url(../img/emoji.svg);
+							background-size: cover;
+						}
+					}
+					&-send{
+						width: 60px;
+						height: 100%;
+						@include display-center(center, center);
+						cursor: pointer;
+						.send{
+							width: 24px;
+							height: 24px;
+							background-image: url(../img/mic.svg);
+							background-size: cover;
+						}
+					}
+				}
+			}
+		}
+
+	}
+}

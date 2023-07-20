@@ -1,0 +1,236 @@
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap");
+.chat {
+  width: 100%;
+  height: 100vh;
+  background-color: #272727;
+  display: flex; }
+  .chat__left {
+    width: 15%;
+    height: 100%;
+    background-color: #202020; }
+  .chat__rigth {
+    width: 85%;
+    height: 100%;
+    background-color: #333; }
+    .chat__rigth-header {
+      width: 100%;
+      height: 10%;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+      justify-content: space-between;
+      align-items: center;
+      display: flex;
+      padding: 0 60px; }
+      .chat__rigth-header .header__info {
+        justify-content: center;
+        align-items: center;
+        display: flex; }
+        .chat__rigth-header .header__info-avatar {
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          background-image: url(../../main/img/icon.png);
+          background-size: cover; }
+        .chat__rigth-header .header__info-box {
+          margin-left: 10px; }
+          .chat__rigth-header .header__info-box .header__title {
+            font-family: 'Montserrat', sans-serif;
+            font-style: normal;
+            font-weight: 600;
+            font-size: 16px;
+            line-height: normal;
+            letter-spacing: 0;
+            color: #fff;
+            margin-top: 0; }
+          .chat__rigth-header .header__info-box .header__status {
+            font-family: 'Montserrat', sans-serif;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: normal;
+            letter-spacing: 0;
+            color: #ededed;
+            margin-top: 0; }
+      .chat__rigth-header .header__cricle {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.07);
+        justify-content: center;
+        align-items: center;
+        display: flex;
+        cursor: pointer; }
+        .chat__rigth-header .header__cricle-touch {
+          width: 20px;
+          height: 20px;
+          background-image: url(../img/touch.svg);
+          background-size: cover; }
+    .chat__rigth-main {
+      width: 100%;
+      height: 75%;
+      padding: 0 60px;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto; }
+      .chat__rigth-main::-webkit-scrollbar {
+        width: 4px; }
+      .chat__rigth-main::-webkit-scrollbar-track {
+        background: transparent; }
+      .chat__rigth-main::-webkit-scrollbar-thumb {
+        background: #A1AAB3;
+        border-radius: 8px; }
+      .chat__rigth-main .container__messege {
+        width: 100%;
+        height: auto;
+        display: flex;
+        flex-direction: column; }
+        .chat__rigth-main .container__messege .newMessege {
+          width: auto;
+          height: auto;
+          justify-content: flex-start;
+          align-items: flex-end;
+          display: flex;
+          margin-top: 10px; }
+          .chat__rigth-main .container__messege .newMessege__avatar {
+            width: 35px;
+            height: 35px;
+            background-color: red;
+            border-radius: 50%;
+            justify-content: center;
+            align-items: center;
+            display: flex; }
+          .chat__rigth-main .container__messege .newMessege__messege {
+            min-width: 150px;
+            max-width: 350px;
+            height: auto;
+            border-radius: 14px 14px 14px 4px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-left: 7px;
+            padding: 10px; }
+            .chat__rigth-main .container__messege .newMessege__messege-header {
+              width: 100%;
+              height: 5%;
+              font-family: 'Montserrat', sans-serif;
+              font-style: normal;
+              font-weight: 600;
+              font-size: 12px;
+              line-height: normal;
+              letter-spacing: 0;
+              color: red;
+              margin-top: 0; }
+            .chat__rigth-main .container__messege .newMessege__messege-main {
+              width: 100%;
+              height: 90%;
+              font-family: 'Montserrat', sans-serif;
+              font-style: normal;
+              font-weight: 500;
+              font-size: 14px;
+              line-height: normal;
+              letter-spacing: 0;
+              color: #fff;
+              margin-top: 0;
+              padding-top: 5px; }
+            .chat__rigth-main .container__messege .newMessege__messege-bottom {
+              width: 100%;
+              height: 5%;
+              font-family: 'Montserrat', sans-serif;
+              font-style: normal;
+              font-weight: 400;
+              font-size: 12px;
+              line-height: normal;
+              letter-spacing: 0;
+              color: #A1AAB3;
+              margin-top: 0;
+              justify-content: flex-end;
+              align-items: center;
+              display: flex; }
+        .chat__rigth-main .container__messege .newMessegeOther {
+          align-self: flex-start; }
+        .chat__rigth-main .container__messege .newMessegeMy {
+          align-self: flex-end; }
+          .chat__rigth-main .container__messege .newMessegeMy .newMessege__avatar {
+            display: none; }
+          .chat__rigth-main .container__messege .newMessegeMy .newMessege__messege {
+            border-radius: 6px;
+            margin-left: 7px;
+            padding: 10px; }
+            .chat__rigth-main .container__messege .newMessegeMy .newMessege__messege .newMessege__messege-header p {
+              display: none; }
+    .chat__rigth-bottom {
+      width: 100%;
+      height: 15%;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      padding: 0 20px; }
+      .chat__rigth-bottom .messege {
+        width: 100%;
+        height: 60px;
+        border-radius: 8px;
+        background-color: rgba(255, 255, 255, 0.05);
+        justify-content: space-between;
+        align-items: center;
+        display: flex; }
+        .chat__rigth-bottom .messege__left {
+          width: 60px;
+          height: 100%;
+          justify-content: center;
+          align-items: center;
+          display: flex;
+          cursor: pointer; }
+          .chat__rigth-bottom .messege__left-file {
+            width: 24px;
+            height: 24px;
+            background-image: url(../img/attach.svg);
+            background-size: cover; }
+        .chat__rigth-bottom .messege__main {
+          width: 85%;
+          height: 100%;
+          justify-content: center;
+          align-items: center;
+          display: flex; }
+          .chat__rigth-bottom .messege__main-messege {
+            width: 100%;
+            height: 100%;
+            background-color: transparent;
+            outline: none;
+            border: none;
+            font-family: 'Montserrat', sans-serif;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: normal;
+            letter-spacing: 0;
+            color: #8A8A8A;
+            margin-top: 0; }
+        .chat__rigth-bottom .messege__rigth {
+          width: 120px;
+          height: 100%;
+          justify-content: flex-end;
+          align-items: center;
+          display: flex; }
+          .chat__rigth-bottom .messege__rigth-emoji {
+            width: 60px;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            cursor: pointer; }
+            .chat__rigth-bottom .messege__rigth-emoji .emoji {
+              width: 24px;
+              height: 24px;
+              background-image: url(../img/emoji.svg);
+              background-size: cover; }
+          .chat__rigth-bottom .messege__rigth-send {
+            width: 60px;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            cursor: pointer; }
+            .chat__rigth-bottom .messege__rigth-send .send {
+              width: 24px;
+              height: 24px;
+              background-image: url(../img/mic.svg);
+              background-size: cover; }
+
+/*# sourceMappingURL=Chat.css.map */

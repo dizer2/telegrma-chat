@@ -1,10 +1,8 @@
 @import "../../../main/variables.scss";
 @import "../../../main/mixin.scss";
 
-
-
 	.home__buttons-button{
-		width: 272px;
+		width: 552px;
 		height: 65px;
 		background-color: $mainColor;
 		cursor: pointer;
@@ -20,4 +18,17 @@
 			@include transiton(700ms);
 		}
 	}
+
+
+.home__buttons-green{
+	.home__buttons-button{
+		background-color: $ligthGreen;
+		&:hover{
+			border: 1px solid $ligthGreen;
+			color: $ligthGreen;
+			background-color: transparent;
+		}
+	}	
+}
+
 
