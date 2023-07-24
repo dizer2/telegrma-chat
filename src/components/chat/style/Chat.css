@@ -220,6 +220,23 @@
               height: 24px;
               background-image: url(../img/emoji.svg);
               background-size: cover; }
+          .chat__rigth-bottom .messege__rigth-voice {
+            width: 60px;
+            height: 100%;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+            cursor: pointer; }
+            .chat__rigth-bottom .messege__rigth-voice .send {
+              width: 24px;
+              height: 24px;
+              background-image: url(../img/mic.svg);
+              background-size: cover; }
+            .chat__rigth-bottom .messege__rigth-voice .messege-send {
+              width: 24px;
+              height: 24px;
+              background-image: url(../img/send.svg);
+              background-size: cover; }
           .chat__rigth-bottom .messege__rigth-send {
             width: 60px;
             height: 100%;
@@ -227,10 +244,10 @@
             align-items: center;
             display: flex;
             cursor: pointer; }
-            .chat__rigth-bottom .messege__rigth-send .send {
+            .chat__rigth-bottom .messege__rigth-send .messege-send {
               width: 24px;
               height: 24px;
-              background-image: url(../img/mic.svg);
+              background-image: url(../img/send.svg);
               background-size: cover; }
 
 /*# sourceMappingURL=Chat.css.map */

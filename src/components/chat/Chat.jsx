@@ -1,11 +1,66 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./style/Chat.css"
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 
+import io from 'socket.io-client'; // Додали бібліотеку socket.io-client
+const socket = io('http://localhost:4000', { transports: ['websocket'] }); // 
 
-function Chat() {
+function Chat({user}) {
+	console.log(user);
 	const [selected, setSelected] = useState(false);
+	const [inputEmpty, setInputEmpty] = useState(true);
+	const [chatmessege, setChatmessege] = useState('');
+	const [messages, setMessages] = useState([]);
+	const [currentUsername, setCurrentUsername] = useState(user.name); 
+
+	const handlerChatMessege = (event) => {
+
+		console.log(event.target.value);
+		setChatmessege(event.target.value);
+		const isEmpty = event.target.value.trim().length === 0;
+    	setInputEmpty(isEmpty);
+		console.log(isEmpty);
+	}
+	
+	const [users, setUsers] = useState([]);
+
+	useEffect(() => {
+		const userInfo = { user }; 
+	
+
+		socket.emit('user_connected', userInfo);
+	
+		socket.on('user_list', (users) => {
+		  setUsers(users);
+		});
+	
+		socket.on('new_message', (message) => {
+			setMessages((prevMessages) => [...prevMessages, message]);
+		});
+
+
+		return () => {
+		  socket.off('new_message');
+		  socket.off('new_message');
+
+		};
+	  }, [currentUsername]);
+	
+	
+	  const sendMessage = () => {
+		console.log('send');
+		console.log(messages)
+		const newMessage = {
+		  username: user.name,
+		  message: chatmessege,
+		  timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+		};
+
+		socket.emit('new_message', newMessage);
+		setChatmessege('');
+		setInputEmpty(true);
+	  };
 
   return (
 	<div className='chat'>
@@ -30,111 +85,26 @@ function Chat() {
 			<div className="chat__rigth-main">
 				
 				<div className="container__messege">
-					<div className="newMessege newMessegeOther">
-						<div className="newMessege__avatar"></div>
-						<div className="newMessege__messege">
-							<div className="newMessege__messege-header">
-								<p>kiguk</p>
-							</div>
-							<div className="newMessege__messege-main">
-								<p>lore2 mins? lorem</p>
-							</div>
-							<div className="newMessege__messege-bottom">
-								<p>10:03 AM</p>
-							</div>
-						</div>
+				{messages.map((message, index) => (
+				<div  key={index} className={`newMessege ${ message.username === currentUsername ? 'newMessegeMy' : 'newMessegeOther'}`}>
+					<div className="newMessege__avatar"></div>
+					<div className="newMessege__messege">
+					<div className="newMessege__messege-header">
+						<p>{message.username}</p>
 					</div>
+					<div className="newMessege__messege-main">
+						<p>{message.message}</p>
+					</div>
+					<div className="newMessege__messege-bottom">
+						<p>{message.timestamp}</p>
+					</div>
+					</div>
+				</div>
+				))}
 
-					<div className="newMessege newMessegeMy">
-						<div className="newMessege__avatar"></div>
-						<div className="newMessege__messege">
-							<div className="newMessege__messege-header">
-								<p>kiguk</p>
-							</div>
-							<div className="newMessege__messege-main">
-								<p>lore2 mins? lorem</p>
-							</div>
-							<div className="newMessege__messege-bottom">
-								<p>10:03 AM</p>
-							</div>
-						</div>
-					</div>
-					<div className="newMessege newMessegeMy">
-						<div className="newMessege__avatar"></div>
-						<div className="newMessege__messege">
-							<div className="newMessege__messege-header">
-								<p>kiguk</p>
-							</div>
-							<div className="newMessege__messege-main">
-								<p>lore2 mins? lorem</p>
-							</div>
-							<div className="newMessege__messege-bottom">
-								<p>10:03 AM</p>
-							</div>
-						</div>
-					</div>
-					<div className="newMessege newMessegeOther">
-						<div className="newMessege__avatar"></div>
-						<div className="newMessege__messege">
-							<div className="newMessege__messege-header">
-								<p>kiguk</p>
-							</div>
-							<div className="newMessege__messege-main">
-								<p> Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolorum quam labore saepe ex voluptatum, rem voluptates recusandae necessitatibus debitis, incidunt cumque non adipisci? Sapiente, voluptate. Sint facilis architecto accusamus expedita molestiae. Illo nulla error magni delectus distinctio tenetur iste temporibus pariatur officiis quisquam nam, praesentium numquam assumenda natus excepturi rerum?</p>
-							</div>
-							<div className="newMessege__messege-bottom">
-								<p>10:03 AM</p>
-							</div>
-						</div>
-					</div>
-					<div className="newMessege newMessegeMy">
-						<div className="newMessege__avatar"></div>
-						<div className="newMessege__messege">
-							<div className="newMessege__messege-header">
-								<p>kiguk</p>
-							</div>
-							<div className="newMessege__messege-main">
-								<p>lore2 mins? lorem</p>
-							</div>
-							<div className="newMessege__messege-bottom">
-								<p>10:03 AM</p>
-							</div>
-						</div>
-					</div>
-					<div className="newMessege newMessegeMy">
-						<div className="newMessege__avatar"></div>
-						<div className="newMessege__messege">
-							<div className="newMessege__messege-header">
-								<p>kiguk</p>
-							</div>
-							<div className="newMessege__messege-main">
-								<p>lore2 mins? lorem</p>
-							</div>
-							<div className="newMessege__messege-bottom">
-								<p>10:03 AM</p>
-							</div>
-						</div>
-					</div>
-					<div className="newMessege newMessegeOther">
-						<div className="newMessege__avatar"></div>
-						<div className="newMessege__messege">
-							<div className="newMessege__messege-header">
-								<p>kiguk</p>
-							</div>
-							<div className="newMessege__messege-main">
-								<p>lore2 mins? lorem Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur placeat modi excepturi corrupti exercitationem recusandae quasi, iste amet et suscipit.</p>
-							</div>
-							<div className="newMessege__messege-bottom">
-								<p>10:03 AM</p>
-							</div>
-						</div>
-					</div>
 
 					
 				</div>
-			
-
-
 				
 			</div>
 
@@ -145,16 +115,22 @@ function Chat() {
 					</Button>
 					
 					<div className="messege__main">
-						<input className='messege__main-messege' placeholder='Write a message...' type="text" />
+						<input 	onChange={(event) => handlerChatMessege(event)} value={chatmessege} className='messege__main-messege' placeholder='Write a message...' type="text" />
 					</div>
 					<div className="messege__rigth">
 						<Button className="messege__rigth-emoji">
 							<div className="emoji"></div>
 						</Button>
 
-						<Button className='messege__rigth-send' color="secondary">
-							<div className="send"></div>
-						</Button>
+						{inputEmpty ? (
+							<Button  className='messege__rigth-voice' color="secondary">
+									<div className="send"></div>
+							</Button>
+						) : (
+							<Button onClick={sendMessage} className='messege__rigth-send' color="secondary">
+									<div className="messege-send"></div>
+							</Button>
+						)}
 					</div>
 				</div>
 			</div>

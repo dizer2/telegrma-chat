@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./style/Home.css"
 import Logo from '../UI/logo/Logo';
 import ButtonUI from '../UI/button/ButtonUI';
@@ -6,12 +6,11 @@ import Input from '../UI/input/Input';
 import { Link } from 'react-router-dom';
 
 
-function Home() {
-	const [signUp, setSignUp] = useState(false);
+function Home({setUser}) {
 	const [email, setEmail] = useState('');
+	const [signUp, setSignUp] = useState(false);
 	const [password, setPassword] = useState('');
-
-
+	const [name, setName] = useState('');
 
 	const hadlerSignUp = () => {
 		setSignUp(true);
@@ -27,6 +26,29 @@ function Home() {
 		setPassword(event.target.value);
 	}
 
+	const handlerName = (event) => {
+		console.log(event.target.value);
+		setName(event.target.value);
+	}
+
+	const SignUp = () => {
+		function generateUniqueId() {
+			return Date.now();
+		  }
+
+		  const newUser = {
+			id: generateUniqueId(),
+			name: name,
+			password: password,
+			email: email,
+		};
+		console.log(newUser);
+		setUser(newUser);
+		localStorage.removeItem('USER-TELEGRAM');
+		localStorage.setItem('USER-TELEGRAM', JSON.stringify(newUser));
+	}
+
+
   return (
 	<div className='home'>
 		<div className="home__rigth-background"></div>
@@ -38,10 +60,11 @@ function Home() {
 
 		{signUp ? (
 			<div className="home__buttons  home__buttons-green">
+				<Input handler={handlerName} value={name}  text="Name" name="text"/>
 				<Input handler={handlerEmail} value={email}  text="Email" name="email"/>
 				<Input handler={handlerPassword} value={password} text="Password" name="password"/>
 				
-				<Link to="/chat">
+				<Link onClick={SignUp} to="/chat">
 					<ButtonUI text="Sign up" />
 				</Link>
 			</div>

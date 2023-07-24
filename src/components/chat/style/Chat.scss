@@ -207,7 +207,7 @@
 							background-size: cover;
 						}
 					}
-					&-send{
+					&-voice{
 						width: 60px;
 						height: 100%;
 						@include display-center(center, center);
@@ -216,6 +216,24 @@
 							width: 24px;
 							height: 24px;
 							background-image: url(../img/mic.svg);
+							background-size: cover;
+						}
+						.messege-send{
+							width: 24px;
+							height: 24px;
+							background-image: url(../img/send.svg);
+							background-size: cover;
+						}
+					}
+					&-send{
+						width: 60px;
+						height: 100%;
+						@include display-center(center, center);
+						cursor: pointer;
+						.messege-send{
+							width: 24px;
+							height: 24px;
+							background-image: url(../img/send.svg);
 							background-size: cover;
 						}
 					}
