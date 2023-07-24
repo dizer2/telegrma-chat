@@ -92,7 +92,7 @@
 					&__avatar{
 						width: 35px;
 						height: 35px;
-						background-color: red;
+						background-size: cover;
 						border-radius: 50%;
 						@include display-center(center, center);
 	

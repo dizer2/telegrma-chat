@@ -51,6 +51,31 @@ a{
 	}
 	.home__buttons{
 		margin-top: 20px;
+		&-upload {
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100px;
+		  
+			.upload-button {
+			  cursor: pointer;
+			  background-color: #3498db;
+			  color: #fff;
+			  padding: 10px 20px;
+			  border-radius: 5px;
+			  font-size: 16px;
+			  transition: background-color 0.3s ease;
+		  
+			  &:hover {
+				background-color: #2980b9;
+			  }
+			}
+		  
+			// Hide the default file input
+			#avatarUpload {
+			  display: none;
+			}
+		  }
 	}
 	
 

@@ -58,5 +58,22 @@ a {
     top: -10%; }
   .home .home__buttons {
     margin-top: 20px; }
+    .home .home__buttons-upload {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100px; }
+      .home .home__buttons-upload .upload-button {
+        cursor: pointer;
+        background-color: #3498db;
+        color: #fff;
+        padding: 10px 20px;
+        border-radius: 5px;
+        font-size: 16px;
+        transition: background-color 0.3s ease; }
+        .home .home__buttons-upload .upload-button:hover {
+          background-color: #2980b9; }
+      .home .home__buttons-upload #avatarUpload {
+        display: none; }
 
 /*# sourceMappingURL=Home.css.map */

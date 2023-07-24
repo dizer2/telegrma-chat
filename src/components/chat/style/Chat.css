@@ -93,7 +93,7 @@
           .chat__rigth-main .container__messege .newMessege__avatar {
             width: 35px;
             height: 35px;
-            background-color: red;
+            background-size: cover;
             border-radius: 50%;
             justify-content: center;
             align-items: center;

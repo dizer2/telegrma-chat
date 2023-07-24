@@ -50,10 +50,12 @@ function Chat({user}) {
 	
 	  const sendMessage = () => {
 		console.log('send');
-		console.log(messages)
+		console.log(messages);
+		console.log(user.url);
 		const newMessage = {
 		  username: user.name,
 		  message: chatmessege,
+		  url: user.url,
 		  timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
 		};
 
@@ -87,7 +89,7 @@ function Chat({user}) {
 				<div className="container__messege">
 				{messages.map((message, index) => (
 				<div  key={index} className={`newMessege ${ message.username === currentUsername ? 'newMessegeMy' : 'newMessegeOther'}`}>
-					<div className="newMessege__avatar"></div>
+					<div  style={{ backgroundImage: message.url ? `url(${message.url})` : `url('defaultAvatarUrl')` }}className="newMessege__avatar"></div>
 					<div className="newMessege__messege">
 					<div className="newMessege__messege-header">
 						<p>{message.username}</p>
