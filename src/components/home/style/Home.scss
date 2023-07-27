@@ -32,7 +32,7 @@ a{
 	}
 	&__description{
 		width: 500px;
-		@include font(#fff, 32px, 500, 40px, 2px, 30px);
+		@include font(#fff, 32px, 500, 40px, 2px, 15px);
 		text-align: center;
 		span{
 			color: $ligthGreen;
@@ -50,24 +50,19 @@ a{
 		top: -10%;
 	}
 	.home__buttons{
-		margin-top: 20px;
+		margin-top: 10px;
 		&-upload {
-			display: flex;
-			justify-content: center;
-			align-items: center;
-			height: 100px;
-		  
+			height: 40px;
 			.upload-button {
 			  cursor: pointer;
-			  background-color: #3498db;
+			  background-color: $mainColor;
 			  color: #fff;
 			  padding: 10px 20px;
-			  border-radius: 5px;
-			  font-size: 16px;
+			  @include font(#fff, 16px, 600, 20px, 0, 0);
 			  transition: background-color 0.3s ease;
 		  
 			  &:hover {
-				background-color: #2980b9;
+				background-color: $ligthGreen;
 			  }
 			}
 		  
@@ -77,7 +72,6 @@ a{
 			}
 		  }
 	}
-	
 
 }
 

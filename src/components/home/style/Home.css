@@ -43,7 +43,7 @@ a {
     line-height: 40px;
     letter-spacing: 2px;
     color: #fff;
-    margin-top: 30px;
+    margin-top: 15px;
     text-align: center; }
     .home__description span {
       color: #6CCB5F; }
@@ -57,22 +57,25 @@ a {
     left: -10%;
     top: -10%; }
   .home .home__buttons {
-    margin-top: 20px; }
+    margin-top: 10px; }
     .home .home__buttons-upload {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100px; }
+      height: 40px; }
       .home .home__buttons-upload .upload-button {
         cursor: pointer;
-        background-color: #3498db;
+        background-color: #7B61FF;
         color: #fff;
         padding: 10px 20px;
-        border-radius: 5px;
+        font-family: 'Montserrat', sans-serif;
+        font-style: normal;
+        font-weight: 600;
         font-size: 16px;
+        line-height: 20px;
+        letter-spacing: 0;
+        color: #fff;
+        margin-top: 0;
         transition: background-color 0.3s ease; }
         .home .home__buttons-upload .upload-button:hover {
-          background-color: #2980b9; }
+          background-color: #6CCB5F; }
       .home .home__buttons-upload #avatarUpload {
         display: none; }
 
