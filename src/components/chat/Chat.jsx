@@ -3,66 +3,63 @@ import "./style/Chat.css"
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 
-import io from 'socket.io-client'; // Додали бібліотеку socket.io-client
+import io from 'socket.io-client'; 
 const socket = io('http://localhost:4000', { transports: ['websocket'] }); // 
-
-function Chat({user}) {
+function Chat({ user }) {
 	console.log(user);
+  
 	const [selected, setSelected] = useState(false);
 	const [inputEmpty, setInputEmpty] = useState(true);
-	const [chatmessege, setChatmessege] = useState('');
+	const [chatMessage, setChatMessage] = useState('');
 	const [messages, setMessages] = useState([]);
-	const [currentUsername, setCurrentUsername] = useState(user.name); 
-
-	const handlerChatMessege = (event) => {
-
-		console.log(event.target.value);
-		setChatmessege(event.target.value);
-		const isEmpty = event.target.value.trim().length === 0;
-    	setInputEmpty(isEmpty);
-		console.log(isEmpty);
-	}
-	
+	const [currentUsername, setCurrentUsername] = useState(user.name);
+  
+	// Обробник введення повідомлення в чаті
+	const handleChatMessage = (event) => {
+	  const messageValue = event.target.value;
+	  console.log(messageValue);
+	  setChatMessage(messageValue);
+	  const isEmpty = messageValue.trim().length === 0;
+	  setInputEmpty(isEmpty);
+	  console.log(isEmpty);
+	};
+  
+	// Стан для збереження списку користувачів
 	const [users, setUsers] = useState([]);
-
+  
 	useEffect(() => {
-		const userInfo = { user }; 
-	
-
-		socket.emit('user_connected', userInfo);
-	
-		socket.on('user_list', (users) => {
-		  setUsers(users);
-		});
-	
-		socket.on('new_message', (message) => {
-			setMessages((prevMessages) => [...prevMessages, message]);
-		});
-
-
-		return () => {
-		  socket.off('new_message');
-		  socket.off('new_message');
-
-		};
-	  }, [currentUsername]);
-	
-	
-	  const sendMessage = () => {
-		console.log('send');
-		console.log(messages);
-		console.log(user.url);
-		const newMessage = {
-		  username: user.name,
-		  message: chatmessege,
-		  url: user.url,
-		  timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
-		};
-
-		socket.emit('new_message', newMessage);
-		setChatmessege('');
-		setInputEmpty(true);
+	  const userInfo = { user };
+  
+	  socket.emit('user_connected', userInfo);
+  
+	  socket.on('user_list', (users) => {
+		setUsers(users);
+	  });
+  
+	  socket.on('new_message', (message) => {
+		setMessages((prevMessages) => [...prevMessages, message]);
+	  });
+  
+	  // Знімаємо підписки на події при зміні currentUsername
+	  return () => {
+		socket.off('new_message');
+		socket.off('user_list');
 	  };
+	}, [currentUsername]);
+  
+	// Функція для відправлення повідомлення
+	const sendMessage = () => {
+	  const newMessage = {
+		username: user.name,
+		message: chatMessage,
+		url: user.url,
+		timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+	  };
+  
+	  socket.emit('new_message', newMessage);
+	  setChatMessage('');
+	  setInputEmpty(true);
+	};
 
   return (
 	<div className='chat'>
@@ -82,7 +79,6 @@ function Chat({user}) {
 					<div className="header__cricle-touch"></div>
 				</IconButton>
 
-				
 			</div>
 			<div className="chat__rigth-main">
 				
@@ -103,11 +99,8 @@ function Chat({user}) {
 					</div>
 				</div>
 				))}
-
-
 					
 				</div>
-				
 			</div>
 
 			<div className="chat__rigth-bottom">
@@ -117,7 +110,7 @@ function Chat({user}) {
 					</Button>
 					
 					<div className="messege__main">
-						<input 	onChange={(event) => handlerChatMessege(event)} value={chatmessege} className='messege__main-messege' placeholder='Write a message...' type="text" />
+						<input 	onChange={(event) => handleChatMessage(event)} value={chatMessage} className='messege__main-messege' placeholder='Write a message...' type="text" />
 					</div>
 					<div className="messege__rigth">
 						<Button className="messege__rigth-emoji">
