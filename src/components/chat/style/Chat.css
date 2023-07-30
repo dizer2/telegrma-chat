@@ -308,6 +308,13 @@
             padding-top: 12px;
             padding-bottom: 12px;
             resize: none; }
+            .chat__rigth-bottom .messege__main-messege::-webkit-scrollbar {
+              width: 4px; }
+            .chat__rigth-bottom .messege__main-messege::-webkit-scrollbar-track {
+              background: transparent; }
+            .chat__rigth-bottom .messege__main-messege::-webkit-scrollbar-thumb {
+              background: #A1AAB3;
+              border-radius: 8px; }
         .chat__rigth-bottom .messege__rigth {
           width: 120px;
           height: 100%;

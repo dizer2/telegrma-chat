@@ -288,6 +288,18 @@
 						padding-top: 12px;
 						padding-bottom: 12px;
 						resize: none; 
+						&::-webkit-scrollbar {
+							width: 4px;
+						}
+						  
+						  &::-webkit-scrollbar-track {
+							background: transparent;
+						  }
+						  
+						  &::-webkit-scrollbar-thumb {
+							background: $time;
+							border-radius: 8px;
+						  }
 					}
 				}
 				&__rigth{
