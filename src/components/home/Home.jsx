@@ -111,7 +111,7 @@ function Home({ setUser }) {
 			// Очищення даних про користувача у localStorage
 			localStorage.removeItem('USER-TELEGRAM');
 			localStorage.setItem('USER-TELEGRAM', JSON.stringify(newUser));
-			
+			navigate('/chat');
 		  }
 		
 		
