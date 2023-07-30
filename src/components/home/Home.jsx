@@ -65,7 +65,7 @@ function Home({ setUser }) {
 		  const formData = new FormData();
 		  formData.append('avatar', selectedAvatar);
   
-		  fetch('http://localhost:4000/upload-avatar', {
+		  fetch('https://chatio-server.onrender.com/upload-avatar', {
 			method: 'POST',
 			body: formData,
 		  })
