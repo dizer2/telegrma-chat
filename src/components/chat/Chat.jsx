@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import IconButton from '@mui/material/IconButton';
 import MicRecorder from 'mic-recorder-to-mp3';
 import io from 'socket.io-client';
-const socket = io('http://localhost:4000', { transports: ['websocket'] });
+const socket = io('https://chatio-server.onrender.com/', { transports: ['websocket'] });
 
 
 const Chat = ({ user, setUser }) => {
