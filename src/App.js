@@ -13,7 +13,7 @@ function App() {
     <BrowserRouter>
 		<Routes>
 			<Route path="/*" element={<Home setUser={setUser} />} />
-			<Route path="/chat" element={<Chat user={user} />} />
+			<Route path="/chat" element={<Chat setUser={setUser} user={user} />} />
 		</Routes>
 	</BrowserRouter>
   );

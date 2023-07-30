@@ -10,6 +10,71 @@
 		width: 15%;
 		height: 100%;
 		background-color: $bar;
+		@include display-center(space-between, flex-start);
+		flex-direction: column;
+		padding: 45px;
+		padding-left: 30px;
+
+		&-info{
+			width: auto;
+			height: auto;
+			.avatar{
+				width: 60px;
+				height: 60px;
+				background-size: cover;
+				border-radius: 50%;
+				@include display-center(center, center);
+				&__camera{
+					width: 25px;
+					height: 25px;
+					background-image: url(../img/camera.svg);
+					background-size: cover;
+
+					
+				}
+			}
+			.info__box{
+				@include display-center(flex-start, center);
+
+				&-name{
+					@include font(#fff, 24px, 600, normal, 0, 15px);
+				}
+
+				&-pen{
+					width: 20px;
+					height: 20px;
+					background-image: url(../img/pen.svg);
+					background-size: cover;
+					position: relative;
+					top: 7px;
+					margin-left: 10px;
+					cursor: pointer;
+				}
+			}
+		}
+		&-setting{
+			width: 100%;
+			height: auto;
+			.button__log-out{
+				width: 140px;
+				height: 40px;
+				background: $red;
+				border: none;
+				@include display-center(center, center);
+				@include font(#fff, 18px, 500, normal, 0, 0);
+				cursor: pointer;
+				transition: 0.5s;
+
+				&:hover{
+					background-color: transparent;
+					border: 1px solid $red;
+					transition: 0.5s;
+					color: $red;
+				}
+
+			}
+		}
+	
 	}
 	&__rigth{
 		width: 85%;
@@ -211,12 +276,15 @@
 					@include display-center(center, center);
 					&-messege{
 						width: 100%;
-						height: 100%;
+						height: 80%;
 						background-color: transparent;
 						outline: none;
 						border: none;
 						@include font(#8A8A8A, 16px, 500, normal, 0, 0);
-
+						@include display-center(center, center);
+						padding-top: 12px;
+						padding-bottom: 12px;
+						resize: none; 
 					}
 				}
 				&__rigth{
