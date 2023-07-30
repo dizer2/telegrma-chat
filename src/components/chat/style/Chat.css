@@ -35,14 +35,17 @@
         align-items: center;
         display: flex; }
         .chat__left-info .info__box-name {
+          width: 120px;
           font-family: 'Montserrat', sans-serif;
           font-style: normal;
           font-weight: 600;
-          font-size: 24px;
+          font-size: 20px;
           line-height: normal;
           letter-spacing: 0;
           color: #fff;
-          margin-top: 15px; }
+          margin-top: 15px;
+          word-wrap: break-word;
+          overflow-wrap: break-word; }
         .chat__left-info .info__box-pen {
           width: 20px;
           height: 20px;

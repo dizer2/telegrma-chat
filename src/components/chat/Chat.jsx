@@ -230,23 +230,24 @@ const Chat = ({ user, setUser }) => {
 	};
 
 	const handleChangeName = (newName) => {
-		socket.emit('change_name', { oldName: currentUsername, newName });
-
-
-		setUser((prevUser) => {
+		if (newName && newName.trim().length > 0) {
+		  socket.emit('change_name', { oldName: currentUsername, newName });
+	  
+		  setUser((prevUser) => {
 			const updatedUser = { ...prevUser, name: newName };
 			localStorage.setItem('USER-TELEGRAM', JSON.stringify({ name: updatedUser.name, url: updatedUser.url }));
 			return updatedUser;
-		});
-
-		setCurrentUsername(newName);
-	};
+		  });
+	  
+		  setCurrentUsername(newName);
+		}
+	  };
 
 	const handleLogOut = () => {
 		localStorage.clear();
 	}
 
-
+	
 	return (
 		<div className='chat'>
 			<div className="chat__left">

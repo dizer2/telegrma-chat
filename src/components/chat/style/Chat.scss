@@ -37,7 +37,10 @@
 				@include display-center(flex-start, center);
 
 				&-name{
-					@include font(#fff, 24px, 600, normal, 0, 15px);
+					width: 120px;
+					@include font(#fff, 20px, 600, normal, 0, 15px);
+					word-wrap: break-word;
+  					overflow-wrap: break-word;
 				}
 
 				&-pen{

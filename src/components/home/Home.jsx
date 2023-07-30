@@ -3,7 +3,7 @@ import "./style/Home.css"
 import Logo from '../UI/logo/Logo';
 import ButtonUI from '../UI/button/ButtonUI';
 import Input from '../UI/input/Input';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate  } from 'react-router-dom';
 let number = Math.floor(Math.random() * 8) + 1;
 const defaultAvatarImgPromise = import(`./img/avatar${number}.png`);
 let defaultAvatarImg;
@@ -14,6 +14,14 @@ defaultAvatarImgPromise.then((module) => {
 
 
 function Home({ setUser }) {
+	const navigate = useNavigate();
+
+	useEffect(() => {
+		if ("USER-TELEGRAM" in localStorage) {
+		  navigate('/chat');
+		}
+	  }, [navigate]);
+
 	const [email, setEmail] = useState('');
 	const [signUp, setSignUp] = useState(false);
 	const [password, setPassword] = useState('');
@@ -84,20 +92,30 @@ function Home({ setUser }) {
   
 	// Обробник SignUp
 	const handleSignUpSubmit = () => {
-	  let defaultAvatarUrl = defaultAvatarImg; 
-	  const newUser = {
-		id: generateUniqueId(),
-		name: name,
-		password: password,
-		email: email,
-		url: url || defaultAvatarUrl,
-	  };
-	  console.log(newUser);
-	  setUser(newUser);
-  
-	  // Очищення даних про користувача у localStorage
-	  localStorage.removeItem('USER-TELEGRAM');
-	  localStorage.setItem('USER-TELEGRAM', JSON.stringify(newUser));
+
+		  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		  if (!emailRegex.test(email) && password.length < 6) {
+			console.log("gg")
+		  }else{
+			let defaultAvatarUrl = defaultAvatarImg; 
+			const newUser = {
+			  id: generateUniqueId(),
+			  name: name,
+			  password: password,
+			  email: email,
+			  url: url || defaultAvatarUrl,
+			};
+			console.log(newUser);
+			setUser(newUser);
+		
+			// Очищення даних про користувача у localStorage
+			localStorage.removeItem('USER-TELEGRAM');
+			localStorage.setItem('USER-TELEGRAM', JSON.stringify(newUser));
+			
+		  }
+		
+		
+
 	};
   return (
 	<div className='home'>
@@ -120,14 +138,14 @@ function Home({ setUser }) {
 				</label>
 				</div>
 				
-				<Link onClick={handleSignUpSubmit} to="/chat">
-					<ButtonUI text="Sign up" />
-				</Link>
+				<div onClick={handleSignUpSubmit}>
+				<ButtonUI  text="Sign up" />
+				</div>
+
 			</div>
 			) : (
 			<div className="home__buttons">
 				<ButtonUI hadlerSignUp={handleSignUp} text="Sign up" />
-				<ButtonUI  text="Sign in" />
 			</div>
       	)}
 
