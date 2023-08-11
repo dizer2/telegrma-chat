@@ -32,4 +32,18 @@
     color: #6CCB5F;
     background-color: transparent; }
 
+@media screen and (max-width: 800px) {
+  .home__buttons-button {
+    width: 280px;
+    height: 60px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 15px;
+    letter-spacing: 0;
+    color: #fff;
+    margin-top: 0;
+    margin: 10px 0; } }
+
 /*# sourceMappingURL=Button.css.map */

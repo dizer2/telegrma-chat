@@ -26,4 +26,19 @@
   .home__buttons-input::placeholder {
     color: #fff; }
 
+@media screen and (max-width: 800px) {
+  .home__buttons-input {
+    width: 80%;
+    height: 60px;
+    font-family: 'Montserrat', sans-serif;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 15px;
+    letter-spacing: 0;
+    color: #fff;
+    margin-top: 0;
+    margin: 5px 0;
+    padding: 20px 10px; } }
+
 /*# sourceMappingURL=Input.css.map */

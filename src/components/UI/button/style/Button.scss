@@ -32,3 +32,14 @@
 }
 
 
+@media screen and(max-width: 800px) {
+	.home__buttons-button{
+		width: 280px;
+		height: 60px;
+		@include font(#fff, 22px, 500, 15px, 0, 0);
+		margin: 10px 0;
+	}
+
+	
+
+}

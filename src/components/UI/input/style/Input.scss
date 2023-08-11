@@ -20,3 +20,19 @@
 		color: #fff;
 	}
 }
+
+
+
+@media screen and(max-width: 800px) {
+	.home__buttons-input{
+		width: 80%;
+		height: 60px;
+		@include font(#fff, 22px, 500, 15px, 0, 0);
+		margin: 5px 0;
+		padding: 20px 10px;
+	}
+	
+
+}
+
+

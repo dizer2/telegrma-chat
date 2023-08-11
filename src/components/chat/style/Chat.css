@@ -131,7 +131,8 @@
         justify-content: center;
         align-items: center;
         display: flex;
-        cursor: pointer; }
+        cursor: pointer;
+        display: none; }
         .chat__rigth-header .header__cricle-touch {
           width: 20px;
           height: 20px;
@@ -425,7 +426,9 @@
     left: 0%;
     z-index: 9; }
   .chat__rigth {
-    width: 100%; } }
+    width: 100%; }
+    .chat__rigth-header .header__cricle {
+      display: flex; } }
 @media screen and (max-width: 600px) {
   .chat__rigth-header {
     padding: 0 25px; }
@@ -548,20 +551,6 @@
       letter-spacing: 0;
       color: #ededed;
       margin-top: 0; }
-  .chat__rigth-header .header__cricle {
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.07);
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    cursor: pointer; }
-    .chat__rigth-header .header__cricle-touch {
-      width: 20px;
-      height: 20px;
-      background-image: url(../img/touch.svg);
-      background-size: cover; }
   .chat__rigth-main .container__messege .newMessege__messege {
     min-width: 100px;
     max-width: 250px;
