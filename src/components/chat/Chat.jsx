@@ -24,7 +24,9 @@ const Chat = ({ user, setUser }) => {
 	const [selectedImage, setSelectedImage] = useState(null);
 	const [onlineUsersCount, setOnlineUsersCount] = useState(0);
 	const [avatarUrl, setAvatarUrl] = useState(user.url);
+	const [burgerOpen, setBurgerOpen] = useState(false);
 
+	const burgerClass = burgerOpen ? 'chat__left chat__left-burger' : 'chat__left chat__left-hide';
 
 	const updateOnlineUsersCount = (users) => {
 		setOnlineUsersCount(users.length);
@@ -250,7 +252,7 @@ const Chat = ({ user, setUser }) => {
 	
 	return (
 		<div className='chat'>
-			<div className="chat__left">
+			<div className={burgerClass}>
 				<div className="chat__left-info">
 					<div onClick={handleAvatarClick} style={{ backgroundImage: user.url ? `url(${user.url})` : "url('defaultAvatarUrl')", }} className="avatar"
 					><div className="avatar__camera"></div></div>
@@ -281,7 +283,7 @@ const Chat = ({ user, setUser }) => {
 							<p className='header__status'>{onlineUsersCount} online</p>
 						</div>
 					</div>
-					<IconButton className="header__cricle" variant="contained" color="secondary">
+					<IconButton onClick={() => setBurgerOpen(!burgerOpen)} className="header__cricle" variant="contained" color="secondary">
 						<div className="header__cricle-touch"></div>
 					</IconButton>
 
